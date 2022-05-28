@@ -16,12 +16,12 @@ public class TestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
     public String initialWindow;
-    public Set<String> getAllwindows(){
+    public Set<String> getAllWindows(){
         return driver.getWindowHandles();
     };
 
     public void switchToFirstNewWindow(){
-        var newWindow = getAllwindows().stream().filter(w -> !w.equals(initialWindow)).collect(Collectors.toSet());
+        var newWindow = getAllWindows().stream().filter(w -> !w.equals(initialWindow)).collect(Collectors.toSet());
         driver.switchTo().window(newWindow.stream().findFirst().get());
         //driver.switchTo().window(otherWindow.iterator().next());
     }

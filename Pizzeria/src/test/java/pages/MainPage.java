@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,14 +26,15 @@ public class MainPage extends Page {
     @FindBy(css = ".woocommerce-breadcrumb span")
     public WebElement productName;
 
-    @FindBy(id = "icon_facebook")
+    @FindBy(css = "banner-text p:nth-child(4)")
+    private WebElement contacts;
+    @FindBy(css = ".banner-text p:nth-child(3) > a")
     public WebElement facebookLink;
-    @FindBy(id = "icon_vk")
+    @FindBy(css = ".banner-text p:nth-child(4) > a")
     public WebElement vkLink;
-    @FindBy(id = "icon_twitter")
-    public WebElement twitterLink;
-    @FindBy(id = "icon_instagram")
+    @FindBy(css = ".banner-text p:nth-child(5) > a")
     public WebElement instagramLink;
+
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait, "");
@@ -67,11 +67,30 @@ public class MainPage extends Page {
                 .perform();
         firstDessert.click();
     }
-
-    private By getSocialLinkLocator(int index){
-        return By.cssSelector(String.format(".banner-text p:nth-child(%d)", index));
+    public void goFacebook(){
+        wait.until(driver -> facebookLink
+                .isDisplayed());
+        new Actions(driver)
+                .moveToElement(facebookLink)
+                .perform();
+        facebookLink.click();
     }
-    public void goToSocialLinks(int index){
-        driver.findElement(getSocialLinkLocator(index)).click();
+
+    public void goVK(){
+        wait.until(driver -> vkLink
+                .isDisplayed());
+        new Actions(driver)
+                .moveToElement(vkLink)
+                .perform();
+        vkLink.click();
+    }
+
+    public void goInstagram(){
+        wait.until(driver -> instagramLink
+                .isDisplayed());
+        new Actions(driver)
+                .moveToElement(instagramLink)
+                .perform();
+        instagramLink.click();
     }
 }

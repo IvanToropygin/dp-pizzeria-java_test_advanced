@@ -24,6 +24,9 @@ public class NavigationPanel {
     @FindBy(className = "slick-prev")
     private WebElement leftArrowBtn;
 
+    @FindBy(css = ".cart-contents")
+    public WebElement cart;
+
 
     public NavigationPanel(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
