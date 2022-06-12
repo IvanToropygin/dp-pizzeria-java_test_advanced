@@ -1,4 +1,4 @@
-package pages;
+package DP.pizzeria.pages;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +34,6 @@ public class MainPage extends Page {
     public WebElement vkLink;
     @FindBy(css = ".banner-text p:nth-child(5) > a")
     public WebElement instagramLink;
-
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait, "");
