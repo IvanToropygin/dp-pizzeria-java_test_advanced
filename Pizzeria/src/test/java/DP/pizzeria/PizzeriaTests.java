@@ -15,6 +15,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class PizzeriaTests extends TestBase {
 
     //MainPageTests=====================================================================================================
+    //переключение пиццы в слайдере посредством клика стрелочки вправо;
     @Test
     public void switchingPizzaInSliderArrowRightTest(){
         //arrange
@@ -31,6 +32,7 @@ public class PizzeriaTests extends TestBase {
                 " вправо, пицца не изменилась");
     }
 
+    //переключение пиццы в слайдере посредством клика стрелочки влево;
     @Test
     public void switchingPizzaInSliderArrowLeftTest(){
         //arrange
@@ -47,6 +49,7 @@ public class PizzeriaTests extends TestBase {
                 " влево, пицца не изменилась");
     }
 
+    //наведение на картинку напитка с проверкой отображения ссылки «В КОРЗИНУ»;
     @Test
     public void firstProductInDrinks_InCartBtn_isDisplayedAfterHoverTest(){
         //arrange
@@ -60,6 +63,7 @@ public class PizzeriaTests extends TestBase {
                 "после наведения мышью");
     }
 
+    //переход на страницу десерта при клике по его картинке;
     @Test
     public void dessertCart_isDisplayed_AfterClickTest(){
         //arrange
@@ -72,6 +76,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertTrue(page.isNameProductContainsText("Десерт"), "Не отобразилась карточка с десертом");
     }
 
+    //отображение ссылки-стрелочки «Наверх» в правом нижнем углу сайта при скроллинге в самый низ сайта;
     @Test
     public void scrollDownPage_arrowUpIsDisplayedTest(){
         //arrange
@@ -83,6 +88,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertTrue(page.arrowUp.isDisplayed(), "НЕ отобразилась стрелка 'Вверх'");
     }
 
+    //открытие ссылок на социальные сети из футера страницы в новой вкладке.
     @Test
     public void goToFacebookTest(){
         //arrange
@@ -101,6 +107,7 @@ public class PizzeriaTests extends TestBase {
         );
     }
 
+    //открытие ссылок на социальные сети из футера страницы в новой вкладке.
     @Test
     public void goToVKTest(){
         //arrange
@@ -119,6 +126,7 @@ public class PizzeriaTests extends TestBase {
         );
     }
 
+    //открытие ссылок на социальные сети из футера страницы в новой вкладке.
     @Test
     public void goToInstagramTest(){
         //arrange
@@ -147,6 +155,7 @@ public class PizzeriaTests extends TestBase {
         );
     }
 
+    //применение сортировки пицц;
     @ParameterizedTest
     @MethodSource("selectValues")
     public void selectionTest(String selectValue){
@@ -159,6 +168,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertEquals(selectValue, page.getSelect(), "Отбор не соответствует выбранному");
     }
 
+    //фильтрация пицц по цене;
     @Test
     public void isPriceFilterChanged_AfterMoveRightArrowFilterTest(){
         //arrange
@@ -172,6 +182,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertNotEquals(actualRightPrice, firstRightPrice, "Цена не изменилась");
     }
 
+    //фильтрация пицц по цене;
     @Test
     public void isPriceFilterChanged_AfterMoveLeftArrowFilterTest(){
         //arrange
@@ -185,6 +196,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertNotEquals(actualLeftPrice, firstLeftPrice, "Цена не изменилась");
     }
 
+    //добавление пиццы в корзину.
     @Test
     public void isCartChanged_AfterClickInCartTest(){
         //arrange
@@ -205,6 +217,7 @@ public class PizzeriaTests extends TestBase {
                 arguments("0")
         );
     }
+    //увеличение/уменьшение количества товара;
     @ParameterizedTest
     @MethodSource("quantity")
     public void changeQuantityOfGoods(String quantityValue){
@@ -223,6 +236,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertNotEquals(quantityAfterChange, quantityBeforeChange, "Количество товаров в корзине не изменилась");
     }
 
+    //обновление корзины после изменения содержимого (количества товаров);
     @Test
     public void increaseQuantityOfGoodsAndUpdate(){
         //arrange
@@ -240,6 +254,8 @@ public class PizzeriaTests extends TestBase {
         var totalPriceAfterChange = cartPage.orderTotal.getText();
         Assertions.assertNotEquals(totalPriceBeforeChange, totalPriceAfterChange, "Сумма корзины не изменилась");
     }
+
+    //применение промокода (из раздела «Акции»).
     @Test
     public void applyCouponAndUpdate(){
         //arrange
@@ -256,6 +272,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertNotEquals(totalPriceBeforeChange, totalPriceAfterChange, "Сумма корзины не изменилась");
     }
 
+    //переход к оплате (пользователь предварительно авторизован на сайте);
     @Test
     public void transitionToPayment(){
         //arrange
@@ -274,6 +291,7 @@ public class PizzeriaTests extends TestBase {
     }
 
     //CheckOutPageTests=================================================================================================
+    //установка даты заказа;
     @Test
     public void inputOrderDate(){
         //arrange
@@ -293,6 +311,7 @@ public class PizzeriaTests extends TestBase {
         Assertions.assertNotEquals(orderDateAfter, orderDateBefore, "Дата не изменилась");
     }
 
+    //успешное оформление заказа с оплатой наличными.
     @Test
     public void OrderingSuccess(){
         //arrange
@@ -334,6 +353,7 @@ public class PizzeriaTests extends TestBase {
         );
     }
 
+    //переход по всем разделам меню, включая «Меню» → «Пицца», «Меню» → «Десерты», «Меню» → «Напитки».
     @ParameterizedTest
     @MethodSource("subMenu")
     public void mainPageGoToElectronicsSubChapterTest(String name, String expectedUrl){
@@ -350,6 +370,7 @@ public class PizzeriaTests extends TestBase {
     }
 
     //MyAccountTests====================================================================================================
+    //загрузка файла.
     @Test
     public void addFile(){
         //arrange
@@ -365,6 +386,7 @@ public class PizzeriaTests extends TestBase {
     }
 
     //BonusPageTests====================================================================================================
+    //успешное оформление карты с проверкой текста «Заявка отправлена, дождитесь, пожалуйста, оформления карты!».
     @Test
     public void successAlert(){
         //arrange
@@ -382,6 +404,7 @@ public class PizzeriaTests extends TestBase {
     }
 
     //DeliveryAndPaymentTests===========================================================================================
+    //проверка, что на сайте в этом разделе отображается текст «Минимальная сумма заказа — 800 рублей».
     @Test
     public void checkMinimalPriceToOrderIsDisplayed(){
         //arrange
