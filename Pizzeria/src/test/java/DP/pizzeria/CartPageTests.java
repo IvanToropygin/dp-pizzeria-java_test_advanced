@@ -1,7 +1,9 @@
 package DP.pizzeria;
 
 import DP.TestBase;
-import DP.pizzeria.pages.*;
+import DP.pizzeria.pages.AutorizationPage;
+import DP.pizzeria.pages.CartPage;
+import DP.pizzeria.pages.PizzaPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
